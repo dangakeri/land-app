@@ -11,7 +11,7 @@ class HomePageScreen extends StatelessWidget {
         title: const Text('Land'),
       ),
       body: GridView.builder(
-        itemCount: 6,
+        itemCount: 26,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           mainAxisSpacing: 10.0,
