@@ -13,7 +13,7 @@ class _BottomScreenState extends State<BottomScreen> {
   int index = 0;
   final pages = [
     const HomePageScreen(),
-    const AccountScreen(),
+    const AccountPage(),
   ];
 
   @override

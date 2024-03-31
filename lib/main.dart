@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:land/provider/lands_provider.dart';
+import 'package:land/provider/make_payment_provider.dart';
 
-import 'package:land/provider/login_provider.dart';
-import 'package:land/screen/bottom_screen.dart';
+import 'package:land/splashscreen.dart';
 
 import 'package:provider/provider.dart';
 
@@ -17,7 +18,10 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) {
-          return LoginProvider();
+          return LandsProvider();
+        }),
+        ChangeNotifierProvider(create: (_) {
+          return MakePaymentProvider();
         }),
       ],
       child: MaterialApp(
@@ -26,7 +30,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const BottomScreen(),
+        home: const SplashScreen(),
       ),
     );
   }

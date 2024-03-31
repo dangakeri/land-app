@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:land/screen/bottom_screen.dart';
+
+import 'login_screen.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({
@@ -127,7 +130,12 @@ class _SignUpPageState extends State<SignUpPage> {
                 child: ElevatedButton(
                   style:
                       ElevatedButton.styleFrom(backgroundColor: Colors.green),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (BuildContext context) => BottomScreen()));
+                  },
                   child: const Text(
                     'Sign Up',
                     style: TextStyle(color: Colors.white),
@@ -143,7 +151,13 @@ class _SignUpPageState extends State<SignUpPage> {
                     style: TextStyle(fontSize: 16),
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  const LoginPage()));
+                    },
                     child: const Text(
                       'Login',
                       style: TextStyle(

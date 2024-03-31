@@ -26,4 +26,34 @@ class ApiService {
       throw Exception(e);
     }
   }
+
+  Future<http.Response> getAllLand() async {
+    try {
+      var response = await http.get(Uri.parse('$base_url/land/getLands'));
+      print(response.body);
+      return response;
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
+
+  Future<http.Response> makePayment(String amount) async {
+    try {
+      var response = await http.post(
+          headers: {
+            'Content-type': 'application/json',
+            'Accept': 'application/json',
+          },
+          Uri.parse(
+              'https://kifaru.elarchdesigns.com/api/v1/mpesa/mpesaPayment'),
+          body: jsonEncode({
+            "phone": "254759401048",
+            "amount": amount,
+            "description": "Payment for X product at Mess Pay"
+          }));
+      return response;
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
 }

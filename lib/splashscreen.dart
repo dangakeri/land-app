@@ -2,7 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:land/Auth/login_screen.dart';
-import 'package:land/screen/bottom_screen.dart';
+import 'package:land/provider/lands_provider.dart';
+import 'package:provider/provider.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -15,44 +16,24 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    // getCurreUser();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      Provider.of<LandsProvider>(context, listen: false).allLands();
+    });
     super.initState();
   }
 
-  navigateHome() {
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const BottomScreen(),
-      ),
-    );
-  }
-
-  navigateAcc() {
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const LoginPage(),
-      ),
-    );
-  }
-
-  // getCurrentUser() {
-  //   // final User? user = supabase.auth.currentUser;
-
-  //   if (user?.aud == "authenticated") {
-  //     Future.delayed(const Duration(seconds: 3), navigateHome);
-  //   } else {
-  //     Future.delayed(const Duration(seconds: 3), navigateAcc);
-  //   }
-  // }
-
   @override
   Widget build(BuildContext context) {
+    Timer(const Duration(seconds: 3), () {
+      Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => const LoginPage()),
+      );
+    });
+
     return Scaffold(
       body: Center(
         child: Image.asset(
-          'assets/land.jpg',
+          'assets/land.jpeg',
           height: 100,
           width: 100,
         ),

@@ -23,7 +23,7 @@ class LandModel {
       location: json['location'],
       size: json['size'],
       image: json['image'],
-      id: json['id'],
+      id: json['_id'] ?? "",
       owner: json['owner'],
       description: json['description'],
       price: json['price'],

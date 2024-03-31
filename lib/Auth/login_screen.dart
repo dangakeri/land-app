@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:land/provider/login_provider.dart';
 import 'package:provider/provider.dart';
+import '../screen/bottom_screen.dart';
 import 'sign_up_screen.dart';
 
 class LoginPage extends StatefulWidget {
@@ -24,8 +25,8 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    bool rememberMe = false;
-    final loginProvider = Provider.of<LoginProvider>(context);
+    // bool rememberMe = false;
+    // final loginProvider = Provider.of<LoginProvider>(context);
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
@@ -101,41 +102,19 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
           ),
-          const SizedBox(height: 20),
-          Row(
-            children: [
-              Checkbox(value: (rememberMe), onChanged: (value) {}),
-              const SizedBox(width: 10),
-              const Text(
-                'Remember me',
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
-              ),
-              const Spacer(),
-              TextButton(
-                onPressed: () {
-                  // Navigator.of(context).push(
-                  //   MaterialPageRoute(
-                  //       builder: (context) =>
-                  //           const ForgotPasswordPage()),
-                  // );
-                },
-                child: const Text(
-                  'Forgot password?',
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.black,
-                  ),
-                ),
-              ),
-            ],
-          ),
           const SizedBox(height: 30),
           ElevatedButton(
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
             onPressed: () {
-              loginProvider.loginProvider();
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => BottomScreen()));
             },
-            child: const Text('Login'),
+            child: const Text(
+              'Login',
+              style: TextStyle(color: Colors.white),
+            ),
           ),
           const SizedBox(height: 30),
           Row(
