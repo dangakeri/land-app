@@ -92,7 +92,7 @@ class LandWidget extends StatelessWidget {
         clipBehavior: Clip.none,
         children: [
           Container(
-            height: MediaQuery.of(context).size.height * 85,
+            height: MediaQuery.of(context).size.height * 5,
             decoration: BoxDecoration(
               borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(10),
@@ -107,9 +107,9 @@ class LandWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  height: 130,
-                  decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.only(
+                  height: 110,
+                  decoration:  BoxDecoration(
+                    borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(10),
                       topRight: Radius.circular(10),
                     ),
@@ -121,7 +121,7 @@ class LandWidget extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(
-                  height: 5,
+                  height: 15,
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 5),
