@@ -30,7 +30,7 @@ class ApiService {
   Future<http.Response> getAllLand() async {
     try {
       var response = await http.get(Uri.parse('$base_url/land/getLands'));
-      print(response.body);
+
       return response;
     } catch (e) {
       throw Exception(e);
