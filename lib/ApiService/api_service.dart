@@ -37,7 +37,7 @@ class ApiService {
     }
   }
 
-  Future<http.Response> makePayment(String amount) async {
+  Future<http.Response> makePayment(String amount, String phoneNumber) async {
     try {
       var response = await http.post(
           headers: {
@@ -47,7 +47,7 @@ class ApiService {
           Uri.parse(
               'https://kifaru.elarchdesigns.com/api/v1/mpesa/mpesaPayment'),
           body: jsonEncode({
-            "phone": "254759401048",
+            "phone": phoneNumber.replaceFirst("0", "254"),
             "amount": amount,
             "description": "Payment for X product at Mess Pay"
           }));
@@ -57,3 +57,8 @@ class ApiService {
     }
   }
 }
+
+// TODO => [Tasks]
+// . Buyer can be a seller and Seller can be a Buyer
+// . Check on Authentication
+// . Payment integration 

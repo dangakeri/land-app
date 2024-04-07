@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:land/screen/account_screen.dart';
 import 'package:land/screen/homepage.dart';
+import 'package:land/screen/sell_page.dart';
 
 class BottomScreen extends StatefulWidget {
   const BottomScreen({super.key});
@@ -13,6 +15,7 @@ class _BottomScreenState extends State<BottomScreen> {
   int index = 0;
   final pages = [
     const HomePageScreen(),
+    const SellPage(),
     const AccountPage(),
   ];
 
@@ -30,6 +33,8 @@ class _BottomScreenState extends State<BottomScreen> {
         selectedItemColor: Colors.green,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(
+              icon: Icon(CupertinoIcons.add_circled), label: 'Sell'),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Account'),
         ],
       ),

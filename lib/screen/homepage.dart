@@ -17,10 +17,10 @@ class HomePageScreen extends StatelessWidget {
       body: GridView.builder(
         itemCount: landsProvider.lands.length,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          mainAxisSpacing: 10.0,
-          crossAxisSpacing: 10.0,
-        ),
+            crossAxisCount: 2,
+            mainAxisSpacing: 10.0,
+            crossAxisSpacing: 10.0,
+            mainAxisExtent: 200),
         itemBuilder: (BuildContext context, int index) {
           var land = landsProvider.lands[index];
           return LandWidget(

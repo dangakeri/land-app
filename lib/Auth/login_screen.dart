@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:land/provider/login_provider.dart';
-import 'package:provider/provider.dart';
 import '../screen/bottom_screen.dart';
 import 'sign_up_screen.dart';
 

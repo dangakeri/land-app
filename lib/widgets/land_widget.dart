@@ -27,60 +27,75 @@ class LandWidget extends StatelessWidget {
           builder: (BuildContext context) {
             return Consumer<MakePaymentProvider>(
                 builder: (context, value, child) {
-              return SizedBox(
-                height: 200,
-                width: double.infinity,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(height: 20),
-                      Text(
-                        location,
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
+              return Padding(
+                padding: EdgeInsets.only(
+                    bottom: MediaQuery.of(context).viewInsets.bottom),
+                child: SizedBox(
+                  height: 300,
+                  width: double.infinity,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(height: 20),
+                        Text(
+                          location,
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      Text(
-                        'Size $size m2',
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
+                        Text(
+                          'Size $size m2',
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      Text(
-                        'Ksh $price',
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
+                        Text(
+                          'Ksh $price',
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      const SizedBox(
-                        height: 40,
-                      ),
-                      SizedBox(
-                        height: 40,
-                        width: double.infinity,
-                        child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.green,
-                            ),
-                            onPressed: () {
-                              makePaymentProvider.makePayment(price);
-                            },
-                            child: makePaymentProvider.isLoading
-                                ? const CupertinoActivityIndicator()
-                                : const Text(
-                                    'Buy now',
-                                    style: TextStyle(color: Colors.white),
-                                  )),
-                      )
-                    ],
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        TextFormField(
+                          onChanged: (value) =>
+                              {makePaymentProvider.phoneNumber = value},
+                          decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              hintText: "e.g 0712345678"),
+                        ),
+                        const SizedBox(
+                          height: 40,
+                        ),
+                        SizedBox(
+                          height: 40,
+                          width: double.infinity,
+                          child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.green,
+                              ),
+                              onPressed: () {
+                                FocusManager.instance.primaryFocus!.unfocus();
+                                makePaymentProvider.makePayment(price);
+                              },
+                              child: makePaymentProvider.isLoading
+                                  ? const CupertinoActivityIndicator()
+                                  : const Text(
+                                      'Buy now',
+                                      style: TextStyle(color: Colors.white),
+                                    )),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               );
@@ -92,7 +107,7 @@ class LandWidget extends StatelessWidget {
         clipBehavior: Clip.none,
         children: [
           Container(
-            height: MediaQuery.of(context).size.height * 5,
+            height: MediaQuery.of(context).size.height * 3,
             decoration: BoxDecoration(
               borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(10),
