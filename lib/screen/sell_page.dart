@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:land/provider/make_payment_provider.dart';
+import 'package:provider/provider.dart';
 
 class SellPage extends StatelessWidget {
   const SellPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final landProvider = Provider.of<MakePaymentProvider>(context);
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -16,38 +19,53 @@ class SellPage extends StatelessWidget {
         child: ListView(
           children: [
             TextField(
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   border: OutlineInputBorder(), hintText: "Location"),
+              onChanged: (value) {
+                landProvider.location = value;
+              },
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             TextField(
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   border: OutlineInputBorder(), hintText: "Size"),
+              onChanged: (val) {
+                landProvider.size = val;
+              },
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             TextField(
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   border: OutlineInputBorder(), hintText: "Owner"),
+              onChanged: (val) {
+                landProvider.owner = val;
+              },
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             TextField(
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   border: OutlineInputBorder(), hintText: "Description"),
+              onChanged: (value) {
+                landProvider.description = value;
+              },
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             TextField(
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   border: OutlineInputBorder(), hintText: "Price"),
+              onChanged: (val) {
+                landProvider.price = val;
+              },
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             SizedBox(
@@ -55,11 +73,23 @@ class SellPage extends StatelessWidget {
               child: ElevatedButton(
                   onPressed: () async {
                     final ImagePicker picker = ImagePicker();
-// Pick an image.
+
                     final XFile? image =
                         await picker.pickImage(source: ImageSource.gallery);
+
+                    if (image != null) {
+                      landProvider.image = image.path;
+                    }
                   },
-                  child: Text("Pick Image")),
+                  child: const Text("Pick Image")),
+            ),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                  onPressed: () async {
+                    await landProvider.uploadLand(context);
+                  },
+                  child: const Text("SUBMIT")),
             )
           ],
         ),
